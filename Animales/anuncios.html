@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./script/index.js" type="module"></script>
+  
+    <!--  axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/anuncio.css">
+    <title>Mascotas</title>
+
+
+    <!---
+    prender server:  json-server -w -d2000 db.json  
+    con delay de 2 segundos en respuesta
+    
+    http://localhost:3000/mascotas
+    -->
+
+
+    <!--
+        col-tamaño-ancho col-xl-8
+        esta dividido en 12
+
+        row aligned-items- center . end - start
+        col aligned-self center end start
+
+        justify-content center end start aorund
+
+        offset-numero los mueve para la derecha? solo para vistas superiores
+
+        order-num cambia el orden de la columna
+
+        document.querySelector() o  document.querySelectorAll() y adentro llamo al elemento como en css ej .clase
+
+        .container>div:first-child>div.col
+        del container, llama al div, al primer hijo que sea div col
+
+    -->
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <a class="navbar-brand" href="#">Animales</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="./index.html">Nosotros <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="anuncios.html">Anuncios</a>
+                <a class="nav-item nav-link active" href="./paginas/blog.html">Blog</a>
+                <a class="nav-item nav-link active " href="./paginas/contacto.html">Contacto</a>
+              </div>
+            </div>
+        </nav>
+         <br>
+    </div>
+    <!-- BANNER-->
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12" style="background-image: url(./imagenes/bannerAnimales.png);
+            background-repeat: no-repeat; height: 200px;">
+            <h1 class="text-white">Administracion</h1>
+        </div>
+        <br>
+    </div>
+    <br>
+            <!-- FORM-->
+    <div class="container">
+        <form class="border border-dark">
+            <fieldset>
+                <legend>Informacion del Anuncio</legend>
+                <label for="titulo">TITULO: </label>
+                    <input class="form-control-sm" id="titulo-form" type="text" name="titulo" placeholder="Titulo" required><br><br>
+                <label for="descripcion">Descripcion:</label>
+                    <input class="form-control-sm" id="descripcion-form"type="text" name="descripcion" placeholder="Descripcion" required><br><br>
+              
+                <!--ANIMAL-->
+                <div class="form-check-inline">  
+                    <label class="form-check-label" for="animal">ANIMAL: </label>
+                    <label class="inline">
+                        <input class="" id="perro" type="checkbox" name="perro"> Perro
+                    </label>
+                    <label class="inline">
+                        <input class="" id="gato" type="checkbox" name="gato"> Gato
+                    </label>
+                </div>       
+    
+                <label for="precio">PRECIO: </label>
+                <input class="form-control-sm" name="precio" type="number"  id="precio-form" placeholder="Precio"><br><br>
+                <div class="row">
+                    <img src="./imagenes/perro.png" alt="raza" class="col-sm-1">
+                    <input class="form-control-sm row" name="raza" type="text" id="raza-form" placeholder="raza" required><br>
+                    <img src="./imagenes/cigueña.png" alt="fecha" class="col-sm-1">
+                    <input class="form-control-sm row" name="fecha" type="text" id="fecha-form" placeholder="dd/mm/aaa" required><br>
+                </div>
+                <div class="row"> <!-- ultimos 3 items-->
+                    <div class="col">
+                        <img src="./imagenes/vacuna.png" alt="vacunas" class="col-sm-1">
+                        <select class="form-control-sm "  name="vacuna" id="vacuna-form" required>
+                            <option id="vacunas" value="" disabled selected>---Elegir---</option>
+                            <option value="no" id="no">NO</option>
+                            <option value="si" id="si">SI</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+           <!-- BOTONES-->
+           <div class="row align-items-center justify-content-around" >
+            <input type="submit" class="btn btn-success col text-center" id="btnGuardar" value="Guardar"> 
+            <input type="button" class="btn btn-danger col text-center" id="btnEliminar" value="Eliminar" >
+            <input type="button" class="btn btn-warning col text-center" id="btnModificar" value="Modificar">
+        </div>
+        </form> 
+    </div>
+    <br>
+    <div class="container">
+
+        <div class="row">
+            <div class="row spinner"></div>
+        </div>
+        <div class="row">
+            <div id="divTabla" class="table-responsive"></div>
+        </div>
+
+          <!--  row    FILTROS-->
+                 <div class="row"style="background-color:grey; height: 100px;">
+
+                       <div class="col-6" style=" background-color:#aaa; height: 100px;">
+                            <label class="" for="">FILTRAR </label>
+                            <select class="form-control"  style="width: 200px;" id="filtroAnimales" >
+                               <option value="todos" selected>--Elegir opcion----</option>
+                               <option value="perro">Perro</option>
+                               <option value="gato" >Gato</option>
+                               <option value="todos" >Todos</option>
+                        </div>
+                        <div class="col-4" style=" background-color: #eee;">
+                            <!---no aparece en el html de la pagina-->
+                            <label class="">PROMEDIO DE PRECIOS</label>
+                            <input type="text" name="" id="input-promedio" readonly>
+                        </div>
+                </div>
+
+           <!--  row    CHEKBOXES-->
+           <br>
+           <div class="row" id="div-checkbox">
+               <h3>Destilde la opción que desee quitar</h3>
+                <div class="form-check">
+                    <label class="inline">
+                    <input class="checkbox" id="titulo-check" type="checkbox" name="titulo" checked> Titulo
+                    
+                    <label class="inline">
+                    <input class="checkbox" id="descripcion-check" type="checkbox" name="descripcion" checked> Descripcion
+                    
+                    <label class="inline">
+                    <input class="checkbox" id="animal-check" type="checkbox" name="animal" checked> Animal
+                    
+                    <label class="inline">
+                    <input class="checkbox" id="precio-check" type="checkbox" name="precio" checked> Precio
+
+                    <label class="inline">
+                    <input class="checkbox" id="raza-check" type="checkbox" name="raza" checked> Raza
+                        
+                    <label class="inline">
+                    <input class="checkbox" id="fecha-check" type="checkbox" name="fecha" checked> Fecha
+        
+                    <label class="inline">
+                    <input class="checkbox" id="vacuna-check" type="checkbox" name="vacuna" checked> Vacuna
+         
+                </div>
+
+           </div>
+           <!-- tabla de checkbox-->
+           <div id="divTablaCheck"></div>
+    </div>
+  
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

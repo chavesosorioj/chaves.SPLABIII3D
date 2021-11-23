@@ -1,0 +1,116 @@
+header{
+    display: flex;
+    background-color: rgb(94, 5, 94);
+    justify-content: space-between;
+    text-decoration: none;
+    align-items: center;
+}
+/*  nav y footer */
+
+
+#portada{
+    width: 100%;
+    height: auto;
+}
+                                            /* FORMULARIO*/
+
+legend{
+    color: grey;
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+#form{
+    margin : 0 auto;
+    max-width: 500px;
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+#form div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+label{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: left;
+    font-size: medium;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/*
+
+input, select{
+    background-color: lightgrey;
+    border: solid lightgrey;
+    border-radius: 8px;
+    height: 25px;
+    width: 98%;
+    text-align: left;
+}
+
+
+
+
+*/
+
+#btnGuardar, #btnEliminar, #btnModificar{
+    height: 45px;
+    width: 50px;
+    margin: 10px;
+    text-align: right;
+    font-size: 15px;
+    border-radius: 0px;
+    background-position: left;
+    background-size: 20px;
+    background-repeat:no-repeat;
+}
+                                        /* p del footer*/
+p{
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+/*
+table, tr, td, th{
+    border-collapse: collapse;
+    border: 2px solid violet;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    cursor: pointer;
+    height: 50px;
+}
+table{
+    width: 100px;
+    margin: 0 auto;
+}
+
+td{
+    padding: 6px 12px;
+}
+th{
+    background-color: rgb(167, 27, 223);
+    color: whitesmoke;
+}
+*/
+
+
+/*mobile*/
+
+@media screen and (max-width :500px){
+    
+    h1{
+        visibility: hidden;
+    }
+
+    nav{
+        flex-direction: column;
+        height: 300px;   
+    }
+}

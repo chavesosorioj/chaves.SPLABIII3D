@@ -1,0 +1,44 @@
+{
+  "mascotas": [
+    {
+      "id": 1,
+      "titulo": "compra",
+      "descripcion": "hembra - castrada",
+      "animal": "perro",
+      "precio": 1500,
+      "raza": "cocker",
+      "fecha": "21-11-21",
+      "vacuna": "si"
+    },
+    {
+      "id": 2,
+      "titulo": "compra",
+      "descripcion": "macho - castrado",
+      "animal": "perro",
+      "precio": 3000,
+      "raza": "pastor aleman",
+      "fecha": "10-11-21",
+      "vacuna": "si"
+    },
+    {
+      "id": 3,
+      "titulo": "compra",
+      "descripcion": "macho - sin castrar",
+      "animal": "gato",
+      "precio": 2500,
+      "raza": "siames",
+      "fecha": "19-11-21",
+      "vacuna": "no"
+    },
+    {
+      "id": 4,
+      "titulo": "compra",
+      "descripcion": "hembra - castrada",
+      "animal": "gato",
+      "precio": 3400,
+      "raza": "siames",
+      "fecha": "19-11-21",
+      "vacuna": "no"
+    }
+  ]
+}
